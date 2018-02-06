@@ -1,73 +1,61 @@
 'use strict';
 window.onload = function() {
-    /*
-    console.log('Hello!');
-    var buttons = document.getElementsByTagName('button');
-
-    function foo() {
-        this.innerText = Number(this.innerText) + 1;
+    // title a song
+    const title = document.getElementsByTagName('span')[0];
+    // audio
+    const audioElem = document.getElementsByTagName('audio')[0];
+    // next
+    const nextButton = document.getElementsByClassName('next')[0];
+    // back
+    const backButton = document.getElementsByClassName('back')[0];
+    // stop
+    const stop = document.getElementsByClassName('stop')[0];
+    // play
+    const buttonPlay = document.getElementsByClassName('playstate')[0];
+    // visual
+    const mediaplayer = document.getElementsByClassName('mediaplayer')[0];
+    // step of array
+    let count = 0;
+    // collection classes
+    const searchClass = mediaplayer.classList;
+    // array with title of song
+    const arr = [
+        'LA Chill Tour',
+        'LA Fusion Jam',
+        'This is it band'
+    ];
+    // array with song
+    const mp3 = [
+        '/mp3/LA Chill Tour.mp3',
+        '/mp3/LA Fusion Jam.mp3',
+        '/mp3/This is it band.mp3'
+    ];
+    // remove class
+    function removeClass() {
+        searchClass.remove('play');
     }
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].onclick = foo;
+    // click play
+    buttonPlay.onclick = () => {
+        mediaplayer.classList.toggle('play') ? audioElem.play() : audioElem.pause()
     }
-    const div1 = document.getElementById('div1');
-    const div2 = document.getElementById('div2');
-    const btns1 = div1.getElementsByTagName('button');
-    const btns2 = div2.getElementsByTagName('button');
-    console.log(btns1.length);
-    console.log(btns2.length);
-
-    const butChek = document.getElementsByClassName('chek-button');
-
-    function foo() {
-        this.className = this.className.split(' ').reduce(function(classes, item) {
-            if (item === 'red') {
-                classes.shift();
-            } else {
-                classes.push(item);
-            }
-            return classes;
-        }, ['red']).join(' ');
+    // click next
+    nextButton.onclick = () => {
+        count = ++count % arr.length;
+        title.title = arr[count];
+        audioElem.src = mp3[count];
+        removeClass();
     }
-
-    for (const btn of butChek) {
-        btn.onclick = foo;
+    // click back
+    backButton.onclick = () => {
+        count = (count + arr.length - 1) % arr.length;
+        title.title = arr[count];
+        audioElem.src = mp3[count];
+        removeClass();
     }
-
-
-    const divId = document.getElementById('bt');
-
-    function foo2() {
-        const divButton = divId.className.split(' ');
-        const but = divButton.indexOf('sel')
-        if (but === -1) {
-            divButton.push('sel');
-        } else {
-            divButton.splice(but, 1);
-        }
-        divId.className = divButton.join(' ');
+    // stop click
+    stop.onclick = () => {
+        audioElem.pause();
+        audioElem.currentTime = 0;
+        removeClass();
     }
-    divId.onclick = foo2;
-
-
-    var x = document.getElementsByClassName('a')[0];
-   // let v = x.forEach(el => el.classList);
-   let n = x.classList
-    console.log(n)
-    for(let key of n){
-    	console.log(key)
-    }
-
-
-    var t = document.getElementsByClassName('a');
-    for(let k of t){
-    	let key = k.classList;
-    	for(let i of key){
-    		console.log(i)
-    	}
-    	
-    }
-    */
-
-
 }
