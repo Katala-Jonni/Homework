@@ -52,7 +52,7 @@ window.onload = function() {
         audioElem.src = mp3[count];
         removeClass();
     }
-    // stop click
+    // click stop
     stop.onclick = () => {
         audioElem.pause();
         audioElem.currentTime = 0;
