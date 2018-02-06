@@ -1,10 +1,11 @@
 'use strict';
 window.onload = function() {
+    // button
     const button = document.getElementsByClassName('wrapper-dropdown')[0];
     // Решение 1
     /*
     button.onclick = () =>{
-    	button.classList.toggle('active');
+        button.classList.toggle('active');
     }
     */
 
@@ -21,10 +22,7 @@ window.onload = function() {
 
     // Решение 3
     const butChek = document.getElementsByClassName('wrapper-dropdown');
-    // Если данный класс повешен много где и только какой-то
-    // элемент является выпадающим списком с этим классом,
-    // можем задать нужный индекс в конце и убрать цикл
-    // const butChek = document.getElementsByClassName('wrapper-dropdown')[0];
+
     function foo() {
         this.className = this.className.split(' ').reduce(function(classes, item) {
             if (item === 'active') {
@@ -35,11 +33,11 @@ window.onload = function() {
             return classes;
         }, ['active']).join(' ');
     }
-    // если на данный класс повешено много выпадающий списков
+    // если на данный класс повешено много выпадающих списков
     for (const btn of butChek) {
         btn.onclick = foo;
     }
-    // butChek.onclick = foo;
+    // button.onclick = foo;
 
 
 
