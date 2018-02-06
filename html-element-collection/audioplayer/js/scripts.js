@@ -1,52 +1,73 @@
 'use strict';
 window.onload = function() {
+    /*
+    console.log('Hello!');
+    var buttons = document.getElementsByTagName('button');
 
-    const player = document.getElementsByClassName('mediaplayer')[0];
-    const audio = document.getElementsByTagName('audio')[0];
-    const buttonPlayPause = document.getElementsByClassName('playstate')[0];
-    const title = document.getElementsByClassName('title')[0];
-    const buttonStop = document.getElementsByClassName('stop')[0];
-    const buttonNext = document.getElementsByClassName('next')[0];
-    const buttonBack = document.getElementsByClassName('back')[0];
-    const tracks = ['mp3/LA Chill Tour.mp3', 'mp3/LA Fusion Jam.mp3', 'mp3/This is it band.mp3'];
-    const tracksTitle = ['LA Chill Tour', 'LA Fusion Jam', 'This is it band'];
+    function foo() {
+        this.innerText = Number(this.innerText) + 1;
+    }
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = foo;
+    }
+    const div1 = document.getElementById('div1');
+    const div2 = document.getElementById('div2');
+    const btns1 = div1.getElementsByTagName('button');
+    const btns2 = div2.getElementsByTagName('button');
+    console.log(btns1.length);
+    console.log(btns2.length);
 
-    let item = 0;
+    const butChek = document.getElementsByClassName('chek-button');
 
-    buttonPlayPause.onclick = function() {
-        player.classList.toggle('play');
-        player.classList.contains('play') ? audio.play() : audio.pause();
+    function foo() {
+        this.className = this.className.split(' ').reduce(function(classes, item) {
+            if (item === 'red') {
+                classes.shift();
+            } else {
+                classes.push(item);
+            }
+            return classes;
+        }, ['red']).join(' ');
     }
 
-    buttonStop.onclick = function() {
-        player.classList.remove('play');
-        audio.pause();
-        audio.currentTime = 0;
+    for (const btn of butChek) {
+        btn.onclick = foo;
     }
 
-    buttonNext.onclick = function() {
-        player.classList.remove('play');
-        if (item < tracks.length - 1) {
-            item++;
-            title.title = tracksTitle[item];
-            audio.src = tracks[item];
+
+    const divId = document.getElementById('bt');
+
+    function foo2() {
+        const divButton = divId.className.split(' ');
+        const but = divButton.indexOf('sel')
+        if (but === -1) {
+            divButton.push('sel');
         } else {
-            item = 0;
-            title.title = tracksTitle[item];
-            audio.src = tracks[item];
+            divButton.splice(but, 1);
         }
+        divId.className = divButton.join(' ');
+    }
+    divId.onclick = foo2;
+
+
+    var x = document.getElementsByClassName('a')[0];
+   // let v = x.forEach(el => el.classList);
+   let n = x.classList
+    console.log(n)
+    for(let key of n){
+    	console.log(key)
     }
 
-    buttonBack.onclick = function() {
-        player.classList.remove('play');
-        if (item > 0) {
-            item--;
-            title.title = tracksTitle[item];
-            audio.src = tracks[item];
-        } else {
-            item = tracks.length - 1;
-            title.title = tracksTitle[item];
-            audio.src = tracks[item];
-        }
+
+    var t = document.getElementsByClassName('a');
+    for(let k of t){
+    	let key = k.classList;
+    	for(let i of key){
+    		console.log(i)
+    	}
+    	
     }
+    */
+
+
 }
