@@ -1,38 +1,45 @@
 'use strict';
 window.onload = function() {
-'use strict';
+    // находим нужные элементы
+    const navigation = document.getElementsByTagName('nav')[0];
+    const secret = document.getElementsByClassName('secret')[0];
 
-const menu = document.getElementsByTagName('nav')[0];
-const secret = document.getElementsByClassName('secret')[0];
+    function getNavigation() {
+        if (!(event.ctrlKey) && !(event.altKey)) {
+            return;
+        }
+        switch (event.code) {
+            case 'KeyT':
+                navigation.classList.toggle('visible');
+                break;
+        }
+    }
+    document.addEventListener('keydown', getNavigation);
+    
+    // исходное слово
+    const secretWord = [
+        'KeyY',
+        'KeyT',
+        'KeyN',
+        'KeyJ',
+        'KeyK',
+        'KeyJ',
+        'KeyU',
+        'KeyB',
+        'KeyZ'
+    ].join('');
 
-function menuOpen(event) {
-	if (!(event.ctrlKey & event.altKey)) {
-		return;
-	}
-	switch (event.code) {
-		case 'KeyT':
-			menu.classList.toggle('visible');
-			break;
-	}
-}
+    // поступающие клавиши
+    const arr = [];
 
-const arrSecretWord = ['KeyY', 'KeyT', 'KeyN', 'KeyJ', 'KeyK', 'KeyJ', 'KeyU', 'KeyB', 'KeyZ'];
-let index = 0;
-
-function getSecret(event) {
-    if (event.code === arrSecretWord[index]) {
-        index++;
-        if (index > 8) {
+    function getSecret(event) {
+        arr.push(event.code);
+        const word = arr.join('').substr(-secretWord.length);
+        if (word === secretWord) {
             secret.classList.add('visible');
         }
-    } else if (event.code === 'KeyY') {
-        index = 1;
-    } else {
-        index = 0;
     }
-}
 
-document.addEventListener('keydown', getSecret);
-
+    document.addEventListener('keydown', getSecret);
 
 }
