@@ -5,7 +5,10 @@ window.onload = function() {
     const secret = document.getElementsByClassName('secret')[0];
 
     function getNavigation() {
-        if (!(event.ctrlKey) && !(event.altKey)) {
+        if (!event.ctrlKey) {
+            return;
+        }
+        if (!event.altKey) {
             return;
         }
         switch (event.code) {
@@ -15,7 +18,7 @@ window.onload = function() {
         }
     }
     document.addEventListener('keydown', getNavigation);
-    
+
     // исходное слово
     const secretWord = [
         'KeyY',
