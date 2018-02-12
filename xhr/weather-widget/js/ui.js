@@ -12,6 +12,7 @@ const weatherMap = {
 };
 
 function setData(data) {
+   console.log(data)
   function getTemp(value) {
     const val = Number(value).toFixed(0);
     if (value > 0) {

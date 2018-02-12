@@ -6,25 +6,25 @@ window.onload = function() {
     const array_li = Array.from(button);
     const music = document.getElementsByTagName('audio');
     const middle = [
-        '/sounds/middle/first.mp3',
-        '/sounds/middle/second.mp3',
-        '/sounds/middle/third.mp3',
-        '/sounds/middle/fourth.mp3',
-        '/sounds/middle/fifth.mp3'
+        'sounds/middle/first.mp3',
+        'sounds/middle/second.mp3',
+        'sounds/middle/third.mp3',
+        'sounds/middle/fourth.mp3',
+        'sounds/middle/fifth.mp3'
     ];
     const lower = [
-        '/sounds/lower/first.mp3',
-        '/sounds/lower/second.mp3',
-        '/sounds/lower/third.mp3',
-        '/sounds/lower/fourth.mp3',
-        '/sounds/lower/fifth.mp3'
+        'sounds/lower/first.mp3',
+        'sounds/lower/second.mp3',
+        'sounds/lower/third.mp3',
+        'sounds/lower/fourth.mp3',
+        'sounds/lower/fifth.mp3'
     ];
     const higher = [
-        '/sounds/higher/first.mp3',
-        '/sounds/higher/second.mp3',
-        '/sounds/higher/third.mp3',
-        '/sounds/higher/fourth.mp3',
-        '/sounds/higher/fifth.mp3'
+        'sounds/higher/first.mp3',
+        'sounds/higher/second.mp3',
+        'sounds/higher/third.mp3',
+        'sounds/higher/fourth.mp3',
+        'sounds/higher/fifth.mp3'
     ];
 
     function getOn() {
@@ -67,7 +67,7 @@ window.onload = function() {
         if (event.target.nodeName !== 'LI') return false;
         event.target.clicked = true;
 
-        array_li.forEach(function(el, i) {
+        array_li.forEach((el, i) =>{
             if (!el.clicked) return false;
             if (classes.contains('middle')) {
                 song.src = middle[i];

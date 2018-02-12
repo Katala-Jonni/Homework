@@ -40,17 +40,30 @@ window.onload = function() {
     }
     // click next
     nextButton.onclick = () => {
-        count = ++count % arr.length;
-        title.title = arr[count];
-        audioElem.src = mp3[count];
-        removeClass();
+        if (mediaplayer.classList.contains('play')) {
+            count = ++count % arr.length;
+            title.title = arr[count];
+            audioElem.src = mp3[count];
+            audioElem.play();
+        } else {
+            count = ++count % arr.length;
+            title.title = arr[count];
+            audioElem.src = mp3[count];
+        }
     }
+
     // click back
     backButton.onclick = () => {
-        count = (count + arr.length - 1) % arr.length;
-        title.title = arr[count];
-        audioElem.src = mp3[count];
-        removeClass();
+        if (mediaplayer.classList.contains('play')) {
+            count = (count + arr.length - 1) % arr.length;
+            title.title = arr[count];
+            audioElem.src = mp3[count];
+            audioElem.play();
+        } else {
+            count = (count + arr.length - 1) % arr.length;
+            title.title = arr[count];
+            audioElem.src = mp3[count];
+        }
     }
     // click stop
     stop.onclick = () => {
