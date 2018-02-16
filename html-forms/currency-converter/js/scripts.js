@@ -39,8 +39,8 @@ function getcurrencyConverter() {
         const currencyList = JSON.parse(xhr.responseText);
         if (xhr.status === 200) {
             currencyList.forEach((currency) => {
-                selectFrom.innerHTML += `<option title=${currency.title} value='${currency.value}'>${currency.code}</option>`;
-                selectTo.innerHTML += `<option title=${currency.title} value='${currency.value}'>${currency.code}</option>`;
+                selectFrom.innerHTML += `<option title='${currency.title}' value='${currency.value}'>${currency.code}</option>`;
+                selectTo.innerHTML += `<option title='${currency.title}' value='${currency.value}'>${currency.code}</option>`;
                 amount.addEventListener('input', () => {
                     getResult();
                 });
