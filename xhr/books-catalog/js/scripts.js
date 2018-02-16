@@ -18,6 +18,7 @@ function onLoadStart() {
 
 function onLoad() {
     const bookList = JSON.parse(xhr.responseText);
+    console.log(bookList)
     content.innerHTML = '';
     if (xhr.status !== 200) {
         console.log(`Ответ ${xhr.status}: ${xhr.statusText}`);
