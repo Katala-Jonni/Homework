@@ -15,7 +15,10 @@ function getContacts() {
         liCollection.push(setElementLi);
     }
 
-    liCollection.map(item => contactList.innerHTML += item);
+    //liCollection.map(item => contactList.innerHTML += item);
+    contactList.innerHTML = liCollection.join('');
+    console.log(liCollection);
+
 }
 function contactClick(event) {
     let target = null;

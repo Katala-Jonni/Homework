@@ -2,7 +2,7 @@ function getPriceFormatted(value) {
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 }
 
-function getCart() {
+function onDOMContentLoaded() {
     let price = 0;
     let count = 0;
     let totalPrice = document.querySelector('span#cart-count');
@@ -16,4 +16,4 @@ function getCart() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', getCart);
+document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
