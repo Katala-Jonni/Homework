@@ -2,51 +2,64 @@
 document.addEventListener('DOMContentLoaded', getSlider);
 
 function getSlider() {
+
     // buttons
     const prev = document.querySelector('a[data-action = "prev"]');
     const next = document.querySelector('a[data-action = "next"]');
     const first = document.querySelector('a[data-action="first"]');
     const last = document.querySelector('a[data-action="last"]');
-    // clicks
-    prev.addEventListener('click', event => getSlide('prev'));
-    next.addEventListener('click', event => getSlide('next'));
-    first.addEventListener('click', event => getSlide('first'));
-    last.addEventListener('click', event => getSlide('last'));
 
-    // first slide
-    firstSlide();
+    const slides = document.querySelector('.slides').firstElementChild.classList.add('slide-current');
 
-    function firstSlide() {
-        const activeSlide = document.querySelector('li').classList.add('slide-current');
-        prev.classList.add('disabled');
-        first.classList.add('disabled');
+    let activeSlide = document.querySelector('.slide-current');
+
+    function checkActiveSlide() {
+        if (!activeSlide.previousElementSibling) {
+            prev.classList.add('disabled');
+            first.classList.add('disabled');
+            prev.removeEventListener('click', getSlide);
+        } else {
+            prev.classList.remove('disabled');
+            first.classList.remove('disabled');
+            prev.addEventListener('click', getSlide);
+            first.addEventListener('click', getSlide);
+        }
+
+        if (!activeSlide.nextElementSibling) {
+            next.classList.add('disabled');
+            last.classList.add('disabled');
+            next.removeEventListener('click', getSlide);
+        } else {
+            next.classList.remove('disabled');
+            last.classList.remove('disabled');
+            next.addEventListener('click', getSlide);
+            last.addEventListener('click', getSlide);
+        }
     }
 
-    // slide
-    function getSlide(element) {
-        const slide = document.querySelector('.slide-current');
-        let activeSlide;
+    checkActiveSlide();
 
-        switch (element) {
-            case 'next':
-                activeSlide = slide.nextElementSibling;
+    // slide
+
+    function getSlide(click) {
+        activeSlide.classList.remove('slide-current');
+
+        switch (click.target) {
+            case next:
+                activeSlide = activeSlide.nextElementSibling;
                 break;
-            case 'prev':
-                activeSlide = slide.previousElementSibling;
+            case prev:
+                activeSlide = activeSlide.previousElementSibling;
                 break;
-            case 'first':
-                activeSlide = slide.parentElement.firstElementChild;
+            case first:
+                activeSlide = activeSlide.parentElement.firstElementChild;
                 break;
-            case 'last':
-                activeSlide = slide.parentElement.lastElementChild;
+            case last:
+                activeSlide = activeSlide.parentElement.lastElementChild;
                 break;
         }
 
-        slide.classList.remove('slide-current');
         activeSlide.classList.add('slide-current');
-        activeSlide.nextElementSibling ? next.classList.remove('disabled') : next.classList.add('disabled');
-        activeSlide.nextElementSibling ? last.classList.remove('disabled') : last.classList.add('disabled');
-        activeSlide.previousElementSibling ? prev.classList.remove('disabled') : prev.classList.add('disabled');
-        activeSlide.previousElementSibling ? first.classList.remove('disabled') : first.classList.add('disabled');
+        checkActiveSlide();
     }
 }
