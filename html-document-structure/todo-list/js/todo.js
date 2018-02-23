@@ -6,8 +6,10 @@ const done = document.querySelector('.done');
 Array.from(list).forEach(task => {
     task.addEventListener('click', getResult);
 });
+debugger;
 
 function getResult() {
+
     if (this.hasAttribute('checked')) {
         undone.appendChild(this.parentNode);
         this.removeAttribute('checked');
