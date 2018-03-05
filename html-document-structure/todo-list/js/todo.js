@@ -6,7 +6,6 @@ const done = document.querySelector('.done');
 Array.from(list).forEach(task => {
     task.addEventListener('click', getResult);
 });
-debugger;
 
 function getResult() {
 
