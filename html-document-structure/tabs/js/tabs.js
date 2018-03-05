@@ -1,3 +1,4 @@
+
 'use strict';
 
 const articles = document.querySelector('.tabs-content').children;
