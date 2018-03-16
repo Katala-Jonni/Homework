@@ -40,11 +40,9 @@ function onReservation() {
     showSeat();
 }
 
-
 function random(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
-
 
 function onFree() {
     event.preventDefault();
@@ -76,7 +74,6 @@ function showPlaces(place) {
     const seat = document.querySelectorAll('.seat');
     seat.forEach(el => el.addEventListener('click', onChangeSeat));
 }
-
 
 function onChangeSeat(elem) {
 
