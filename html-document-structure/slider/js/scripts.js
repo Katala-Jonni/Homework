@@ -13,27 +13,27 @@ function getSlider() {
 
     let activeSlide = document.querySelector('.slide-current');
 
+    next.addEventListener('click', getSlide);
+    last.addEventListener('click', getSlide);
+    prev.addEventListener('click', getSlide);
+    first.addEventListener('click', getSlide);
+
     function checkActiveSlide() {
         if (!activeSlide.previousElementSibling) {
             prev.classList.add('disabled');
             first.classList.add('disabled');
-            prev.removeEventListener('click', getSlide);
         } else {
             prev.classList.remove('disabled');
             first.classList.remove('disabled');
-            prev.addEventListener('click', getSlide);
-            first.addEventListener('click', getSlide);
         }
 
         if (!activeSlide.nextElementSibling) {
             next.classList.add('disabled');
             last.classList.add('disabled');
-            next.removeEventListener('click', getSlide);
         } else {
             next.classList.remove('disabled');
             last.classList.remove('disabled');
-            next.addEventListener('click', getSlide);
-            last.addEventListener('click', getSlide);
+
         }
     }
 
@@ -42,6 +42,9 @@ function getSlider() {
     // slide
 
     function getSlide(click) {
+        if(event.currentTarget.classList.contains('disabled')){
+            return;
+        }
         activeSlide.classList.remove('slide-current');
 
         switch (click.target) {
